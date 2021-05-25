@@ -35,13 +35,9 @@ class Lieu
      */
     private $sessions;
 
-    public function __construct($id, $ville, $cp, $sessions = new ArrayCollection())
+    public function __construct()
     {
-        $this->id = $id;
-        $this-ville = $ville;
-        $this->cp = $cp;
-
-        $this->sessions = $sessions;
+        $this->sessions = new ArrayCollection();
     }
 
     public function getId(): ?int

@@ -1,5 +1,5 @@
 date=`date +"%H.%M"`
 
-cp src/Data/Values.php $HOME/Téléchargements/Copies/Values-$date.php
+cp -r src/DataFixtures $HOME/Téléchargements/Copies/DataFixtures-$date
 
 echo "Copie des données de test - $date"

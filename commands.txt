@@ -50,3 +50,5 @@ php bin/console doctrine:schema:update --force
 composer require orm-fixtures --dev
 
 php bin/console make:fixtures
+
+php bin/console doctrine:fixtures:load

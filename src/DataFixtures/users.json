@@ -1,0 +1,10 @@
+{
+    "users" : [
+        {"id" : 1, "email" : "jc@admin.com", "prenom" : "Jean-Charles", "nom" : "HENRI", "password" : "jcadmin", "role" : "Administrateur"},
+        {"id" : 2, "email" : "virgile.gibello@test.com", "prenom" : "Virgile", "nom" : "GIBELLO", "password" : "vgibello", "role" : "Formateur"},
+        {"id" : 3, "email" : "mickael.murmann@test.com", "prenom" : "Mickaël", "nom" : "MURMANN", "password" : "mmurmann", "role" : "Formateur"},
+        {"id" : 4, "email" : "cindy.cahen@test.com", "prenom" : "Cindy", "nom" : "CAHEN", "password" : "ccahen", "role" : "Formateur"},
+        {"id" : 5, "email" : "marie.duvel@test.com", "prenom" : "Marie", "nom" : "DUVEL", "password" : "mduvel", "role" : "Secrétaire"},
+        {"id" : 6, "email" : "martine.dupont@test.com", "prenom" : "Martine", "nom" : "DUPONT", "password" : "mdupont", "role" : "Secrétaire"}
+    ]
+}

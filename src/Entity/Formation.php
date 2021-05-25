@@ -35,13 +35,14 @@ class Formation
      */
     private $modules;
 
-    public function __construct($id, $titre, $modules = new ArrayCollection(), $sessions = new ArrayCollection())
+    public function __construct()
     {
-        $this->id = $id;
-        $this->titre = $titre;
+        $this->sessions = new ArrayCollection();
+    }
 
-        $this->modules = $modules;
-        $this->sessions = $sessions;
+    public function __toString()
+    {
+        return $this->titre;
     }
 
     public function getId(): ?int

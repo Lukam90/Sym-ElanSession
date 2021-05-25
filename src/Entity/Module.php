@@ -25,7 +25,7 @@ class Module
     private $nom;
 
     /**
-     * @ORM\OneToMany(targetEntity=Formation::class, mappedBy="module")
+     * @ORM\ManyToMany(targetEntity=Formation::class, mappedBy="module")
      * @ORM\JoinColumn(nullable=true)
      */
     private $formations;

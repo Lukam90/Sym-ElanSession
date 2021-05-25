@@ -23,9 +23,6 @@
 - telephone : string(20) not null
 - nPoleEmploi : string(10) null
 
-- stagiaire.sessions : OneToMany (Session) nullable
-- stagiaire.session : ManyToOne (Session) nullable
-
 ### Session
 
 - id : int
@@ -34,26 +31,15 @@
 - dateDebut : datetime not null
 - dateFin : datetime not null
 
-- session.stagiaires : OneToMany (Stagiaire) nullable
-
-- session.formation : OneToOne (Formation) not null
-
-- session.lieu : OneToOne (Lieu) not null
-
 ### Formation
 
 - id : int
 - titre : string(100) not null
 
-- formation.modules : OneToMany (Module) not null
-
 ### Module
 
 - id : int
 - nom : string(50) not null
-
-- module.formations : OneToMany (Formation) nullable
-- module.formation : ManyToOne (Formation)
 
 ### Lieu
 
@@ -61,39 +47,48 @@
 - ville : string(100) not null
 - cp : string(10) not null
 
-- lieu.sessions : OneToMany (Session) nullable
-- lieu.session ? ManyToOne (Session) nullable
-
 ## Relations
 
 ### Stagiaire - Session
 
-?
+**stagiaire.sessions** (Stagiaire, ManyToMany, nullable)
 
 Un stagiaire participe à aucune ou plusieurs sessions. (0,n)
 
-Un session a aucun ou plusieurs stagiaires (0,n)
+**session.stagiaires** (Session, ManyToMany, nullable)
 
 ### Session - Lieu
 
-?
+id_lieu
+
+**session.lieu** (Session, ManyToOne)
 
 Une session se déroule dans un seul lieu. (1,1)
+
+**lieu.sessions** (Lieu, OneToMany, nullable)
 
 Un lieu est concerné par aucune ou plusieurs sessions. (0,n)
 
 ### Session - Formation
 
-?
+id_formation
+
+**session.formation** (Session, ManyToOne)
 
 Une session concerne une seule formation. (1,1)
+
+**formation.sessions** (Formation, OneToMany, nullable)
 
 Une formation concerne aucune ou plusieurs sessions. (0,n)
 
 ### Formation - Module
 
-?
+id_module
+
+**formation.modules** (Formation, ManyToMany)
 
 Une formation contient un ou plusieurs modules. (1,n)
+
+**module.formations** (Module, ManyToMany, nullable)
 
 Un module concerne aucune ou plusieurs formations. (0,n)

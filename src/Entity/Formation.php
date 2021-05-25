@@ -25,7 +25,13 @@ class Formation
     private $titre;
 
     /**
-     * @ORM\OneToMany(targetEntity=Module::class, mappedBy="formation")
+     * @OneToMany(targetEntity=Session::class, mappedBy="formation")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $sessions;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Module::class, mappedBy="formation")
      */
     private $modules;
 

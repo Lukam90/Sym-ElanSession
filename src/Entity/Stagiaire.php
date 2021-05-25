@@ -60,16 +60,10 @@ class Stagiaire
     private $nPoleEmploi;
 
     /**
-     * @ORM\OneToMany(targetEntity=Session::class, mappedBy="stagiaire")
+     * @ORM\ManyToMany(targetEntity=Session::class, mappedBy="stagiaires")
      * @ORM\JoinColumn(nullable=true)
      */
     private $sessions;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Session::class, inversedBy="stagiaires")
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $session;
 
     public function __construct()
     {

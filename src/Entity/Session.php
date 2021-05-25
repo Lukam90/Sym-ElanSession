@@ -40,19 +40,18 @@ class Session
     private $dateFin;
 
     /**
-     * @ORM\OneToOne(targetEntity=Formation::class, cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity=Formation::class, inversedBy="formation")
      */
     private $formation;
 
     /**
-     * @ORM\OneToOne(targetEntity=Lieu::class, cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity=Lieu::class, reversedBy="session")
      */
     private $lieu;
 
     /**
-     * @ORM\OneToMany(targetEntity=Stagiaire::class, mappedBy="session")
+     * @ORM\ManyToMany(targetEntity=Stagiaire::class, mappedBy="sessions")
+     * @ORM\JoinColumn(nullable=true)
      */
     private $stagiaires;
 

@@ -10,12 +10,25 @@ symfony server:start
 
 php bin/console make:entity
 
+## Entity > Create
+
 php bin/console make:entity Stagiaire
 php bin/console make:entity User
 php bin/console make:entity Session
 php bin/console make:entity Formation
 php bin/console make:entity Module
 php bin/console make:entity Lieu
+
+## Entity > Update
+
+php bin/console make:entity --regenerate
+
+php bin/console make:entity --regenerate Stagiaire
+php bin/console make:entity --regenerate User
+php bin/console make:entity --regenerate Session
+php bin/console make:entity --regenerate Formation
+php bin/console make:entity --regenerate Module
+php bin/console make:entity --regenerate Lieu
 
 # Database
 

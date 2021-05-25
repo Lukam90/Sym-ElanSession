@@ -24,24 +24,36 @@ class AppFixtures extends Fixture
     // formations
 
     /*
-    public static function getWeb = [$modules[0], $modules[1], $modules[2], $modules[3], $modules[4], $modules[5], $modules[6], $modules[7]];
+    $mWeb = [$modules[0], $modules[1], $modules[2], $modules[3], $modules[4], $modules[5], $modules[6], $modules[7]];
 
-    public static function getJava = [$modules[4], $modules[5], $modules[6]];
+    $mJava = [$modules[4], $modules[5], $modules[6]];
 
-    public static function getInfographie = [$modules[2], $modules[5], $modules[11]];
+    $mInfographie = [$modules[2], $modules[5], $modules[11]];
 
-    public static function getSecretariat = [$modules[5], $modules[7], $modules[8]];
+    $mSecretariat = [$modules[5], $modules[7], $modules[8]];
 
-    public static function getCompta = [$modules[5], $modules[6], $modules[8]];
+    $mCompta = [$modules[5], $modules[6], $modules[8]];
 
-    public static function getVente = [$modules[5], $modules[6], $modules[11]];
+    $mVente = [$modules[5], $modules[6], $modules[11]];
     */
+
+    public function jsonConvert($jsonFile) {
+        $res = file_get_contents("json/$jsonFile");
+
+        $res = json_decode($res);
+
+        return $res;
+    }
 
     public function load(ObjectManager $manager)
     {
         // Utilisateurs
 
-        $users = Values::getUsers();
+        //$users = file_get_contents("json/users.json");
+
+        //var_dump($users);
+
+        /*$users = Values::getUsers();
 
         foreach ($this->users as $user) {
             $manager->persist($user);

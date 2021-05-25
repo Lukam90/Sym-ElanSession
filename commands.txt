@@ -45,6 +45,10 @@ php bin/console doctrine:schema:update --dump-sql
 
 php bin/console doctrine:schema:update --force
 
+# Controller
+
+php bin/console make:controller TestController
+
 # Fixtures
 
 composer require orm-fixtures --dev

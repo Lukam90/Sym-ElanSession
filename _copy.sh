@@ -1,5 +1,5 @@
 date=`date +"%H.%M"`
 
-cp -r src/DataFixtures $HOME/Téléchargements/Copies/DataFixtures-$date
+cp -r public/json $HOME/Téléchargements/Copies/JSON-$date
 
 echo "Copie des données de test - $date"

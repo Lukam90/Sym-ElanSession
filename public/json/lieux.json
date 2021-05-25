@@ -1,0 +1,16 @@
+[
+    {"id" : 1, "ville" : "Strasbourg", "cp" : "67100"},
+    {"id" : 2, "ville" : "Saverne", "cp" : "67700"},
+    {"id" : 3, "ville" : "Sélestat", "cp" : "67600"},
+    {"id" : 4, "ville" : "Haguenau", "cp" : "67500"},
+    {"id" : 5, "ville" : "Colmar", "cp" : "68000"},
+    {"id" : 6, "ville" : "Mulhouse", "cp" : "68200"},
+    {"id" : 7, "ville" : "Molsheim", "cp" : "67120"},
+    {"id" : 8, "ville" : "Epinal", "cp" : "88026"},
+    {"id" : 9, "ville" : "Saint Avold", "cp" : "57500"},
+    {"id" : 10, "ville" : "Forbach", "cp" : "57600"},
+    {"id" : 11, "ville" : "Thionville", "cp" : "57100"},
+    {"id" : 12, "ville" : "Nancy", "cp" : "54320"},
+    {"id" : 13, "ville" : "Metz", "cp" : "57070"},
+    {"id" : 14, "ville" : "Gérardmer", "cp" : "88400"}
+]

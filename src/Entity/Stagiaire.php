@@ -65,7 +65,7 @@ class Stagiaire
      */
     private $sessions;
 
-    public function __construct($sessions = new ArrayCollection())
+    public function __construct()
     {
         $this->sessions = new ArrayCollection();
     }

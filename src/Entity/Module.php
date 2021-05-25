@@ -30,8 +30,11 @@ class Module
      */
     private $formations;
 
-    public function __construct()
+    public function __construct($id, $nom, $formations = new ArrayCollection())
     {
+        $this->id = $id;
+        $this->nom = $nom;
+
         $this->formations = new ArrayCollection();
     }
 

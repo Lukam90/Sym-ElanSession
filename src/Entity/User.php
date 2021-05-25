@@ -43,6 +43,15 @@ class User
      */
     private $role;
 
+    public function __construct($id, $email, $prenom, $nom, $password, $role) {
+        $this->id = $id;
+        $this->email = $email;
+        $this->prenom = $prenom;
+        $this->nom = $nom;
+        $this->password = $password;
+        $this->role = $role;
+    }
+
     public function getId(): ?int
     {
         return $this->id;

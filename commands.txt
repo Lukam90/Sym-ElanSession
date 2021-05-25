@@ -44,3 +44,9 @@ php bin/console doctrine:schema:update --dump-sql
 ### Execution
 
 php bin/console doctrine:schema:update --force
+
+# Fixtures
+
+composer require orm-fixtures --dev
+
+php bin/console make:fixtures

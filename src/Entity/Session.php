@@ -55,9 +55,15 @@ class Session
      */
     private $stagiaires;
 
-    public function __construct()
+    public function __construct($id, $intitule, $nbPlaces, $dateDebut, $dateFin, $stagiaires = new ArrayCollection())
     {
-        $this->stagiaires = new ArrayCollection();
+        $this->id = $id;
+        $this->intitule = $intitule;
+        $this->nbPlaces = $nbPlaces;
+        $this->dateDebut = $dateDebut;
+        $this->dateFin = $dateFin;
+
+        $this->stagiaires = $stagiaires;
     }
 
     public function getId(): ?int

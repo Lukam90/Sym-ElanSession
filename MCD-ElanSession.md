@@ -55,7 +55,23 @@
 
 Un stagiaire participe à aucune ou plusieurs sessions. (0,n)
 
+```php
+/**
+ * @ORM\ManyToMany(targetEntity=Session::class, mappedBy="stagiaires")
+ * @ORM\JoinColumn(nullable=true)
+ */
+private $sessions;
+```
+
 **session.stagiaires** (Session, ManyToMany, nullable)
+
+```php
+/**
+ * @ORM\ManyToMany(targetEntity=Stagiaire::class, mappedBy="sessions")
+ * @ORM\JoinColumn(nullable=true)
+ */
+private $stagiaires;
+```
 
 ### Session - Lieu
 
@@ -65,9 +81,24 @@ id_lieu
 
 Une session se déroule dans un seul lieu. (1,1)
 
+```php
+/**
+ * @ORM\ManyToOne(targetEntity=Lieu::class, inversedBy="lieu")
+ */
+private $lieu;
+```
+
 **lieu.sessions** (Lieu, OneToMany, nullable)
 
 Un lieu est concerné par aucune ou plusieurs sessions. (0,n)
+
+```php
+/**
+ * @ORM\OneToMany(targetEntity=Session::class, mappedBy="lieu")
+ * @ORM\JoinColumn(nullable=true)
+ */
+private $sessions;
+```
 
 ### Session - Formation
 
@@ -77,9 +108,24 @@ id_formation
 
 Une session concerne une seule formation. (1,1)
 
+```php
+/**
+ * @ORM\ManyToOne(targetEntity=Formation::class, inversedBy="formation")
+ */
+private $formation;
+```
+
 **formation.sessions** (Formation, OneToMany, nullable)
 
 Une formation concerne aucune ou plusieurs sessions. (0,n)
+
+```php
+/**
+ * @ORM\OneToMany(targetEntity=Session::class, mappedBy="formation")
+ * @ORM\JoinColumn(nullable=true)
+ */
+private $sessions;
+```
 
 ### Formation - Module
 
@@ -89,6 +135,21 @@ id_module
 
 Une formation contient un ou plusieurs modules. (1,n)
 
+```php
+/**
+ * @ORM\ManyToMany(targetEntity=Module::class, mappedBy="formation")
+ */
+private $modules;
+```
+
 **module.formations** (Module, ManyToMany, nullable)
 
 Un module concerne aucune ou plusieurs formations. (0,n)
+
+```php
+/**
+ * @ORM\ManyToMany(targetEntity=Formation::class, mappedBy="module")
+ * @ORM\JoinColumn(nullable=true)
+ */
+private $formations;
+```

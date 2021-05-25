@@ -65,9 +65,19 @@ class Stagiaire
      */
     private $sessions;
 
-    public function __construct()
+    public function __construct($id, $nom, $prenom, $email, $adresse, $cp, $ville, $telephone, $nPoleEmploi = null, $sessions = new ArrayCollection())
     {
-        $this->sessions = new ArrayCollection();
+        $this->id = $id;
+        $this->nom = $nom;
+        $this->prenom = $prenom;
+        $this->email = $email;
+        $this->adresse = $adresse;
+        $this->cp = $cp;
+        $this->ville = $ville;
+        $this->telephone = $telephone;
+        $this->nPoleEmploi = $nPoleEmploi;
+
+        $this->sessions = $sessions;
     }
 
     public function getId(): ?int

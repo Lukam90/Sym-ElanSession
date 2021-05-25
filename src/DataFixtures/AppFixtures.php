@@ -13,9 +13,15 @@ class AppFixtures extends Fixture
 {
     private $users = Values::$users;
 
+    private $stagiaires = Values::$stagiaires;
+
     private $sessions = Values::$sessions;
 
+    private $lieux = Values::$lieux;
+
     private $formations = Values::$formations;
+
+    private $modules = Values::$modules;
 
     public function load(ObjectManager $manager)
     {

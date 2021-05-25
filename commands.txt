@@ -23,12 +23,11 @@ php bin/console make:entity Lieu
 
 php bin/console make:entity --regenerate
 
-php bin/console make:entity --regenerate Stagiaire
-php bin/console make:entity --regenerate User
-php bin/console make:entity --regenerate Session
-php bin/console make:entity --regenerate Formation
-php bin/console make:entity --regenerate Module
-php bin/console make:entity --regenerate Lieu
+App\Entity\Stagiaire
+App\Entity\Session
+App\Entity\Formation
+App\Entity\Module
+App\Entity\Lieu
 
 # Database
 

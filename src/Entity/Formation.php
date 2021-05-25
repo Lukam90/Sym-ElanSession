@@ -25,7 +25,7 @@ class Formation
     private $titre;
 
     /**
-     * @OneToMany(targetEntity=Session::class, mappedBy="formation")
+     * @ORM\OneToMany(targetEntity=Session::class, mappedBy="formation")
      * @ORM\JoinColumn(nullable=true)
      */
     private $sessions;
@@ -38,6 +38,7 @@ class Formation
     public function __construct()
     {
         $this->modules = new ArrayCollection();
+        $this->sessions = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -81,6 +82,36 @@ class Formation
             // set the owning side to null (unless already changed)
             if ($module->getFormation() === $this) {
                 $module->setFormation(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Session[]
+     */
+    public function getSessions(): Collection
+    {
+        return $this->sessions;
+    }
+
+    public function addSession(Session $session): self
+    {
+        if (!$this->sessions->contains($session)) {
+            $this->sessions[] = $session;
+            $session->setFormation($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSession(Session $session): self
+    {
+        if ($this->sessions->removeElement($session)) {
+            // set the owning side to null (unless already changed)
+            if ($session->getFormation() === $this) {
+                $session->setFormation(null);
             }
         }
 

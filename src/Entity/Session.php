@@ -45,7 +45,7 @@ class Session
     private $formation;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Lieu::class, reversedBy="session")
+     * @ORM\ManyToOne(targetEntity=Lieu::class, inversedBy="lieu")
      */
     private $lieu;
 

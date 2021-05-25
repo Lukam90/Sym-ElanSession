@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\StagiaireRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -56,6 +58,23 @@ class Stagiaire
      * @ORM\Column(type="string", length=10, nullable=true)
      */
     private $nPoleEmploi;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Session::class, mappedBy="stagiaire")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $sessions;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Session::class, inversedBy="stagiaires")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $session;
+
+    public function __construct()
+    {
+        $this->sessions = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -154,6 +173,48 @@ class Stagiaire
     public function setNPoleEmploi(?string $nPoleEmploi): self
     {
         $this->nPoleEmploi = $nPoleEmploi;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Session[]
+     */
+    public function getSessions(): Collection
+    {
+        return $this->sessions;
+    }
+
+    public function addSession(Session $session): self
+    {
+        if (!$this->sessions->contains($session)) {
+            $this->sessions[] = $session;
+            $session->setStagiaire($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSession(Session $session): self
+    {
+        if ($this->sessions->removeElement($session)) {
+            // set the owning side to null (unless already changed)
+            if ($session->getStagiaire() === $this) {
+                $session->setStagiaire(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getSession(): ?Session
+    {
+        return $this->session;
+    }
+
+    public function setSession(?Session $session): self
+    {
+        $this->session = $session;
 
         return $this;
     }

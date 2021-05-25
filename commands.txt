@@ -8,9 +8,27 @@ symfony server:start
 
 # Entities
 
+php bin/console make:entity
+
 php bin/console make:entity Stagiaire
 php bin/console make:entity User
 php bin/console make:entity Session
 php bin/console make:entity Formation
 php bin/console make:entity Module
 php bin/console make:entity Lieu
+
+# Database
+
+## Create
+
+php bin/console doctrine:database:create
+
+## Update
+
+### SQL Commands
+
+php bin/console doctrine:schema:update --dump-sql
+
+### Execution
+
+php bin/console doctrine:schema:update --force

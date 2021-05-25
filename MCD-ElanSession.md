@@ -5,47 +5,47 @@
 ### Stagiaire
 
 - id : int
-- nom : string(30)
-- prenom : string(30)
-- email : string(100)
-- adresse : string(50)
-- cp : string(10)
-- ville : string(100)
-- telephone : string(20)
-- nPoleEmploi : string(10)
+- nom : string(30) not null
+- prenom : string(30) not null
+- email : string(100) not null
+- adresse : string(100) not null
+- cp : string(10) not null
+- ville : string(100) not null
+- telephone : string(20) not null
+- nPoleEmploi : string(10) null
 
 ### Utilisateur
 
 - id : int
-- email : string(100)
-- nom : string(30)
-- prenom : string(30)
-- password: string(255)
-- role : string(20)
+- email : string(100) not null
+- nom : string(30) not null
+- prenom : string(30) not null
+- password: string(255) not null
+- role : string(20) not null
 
 ### Session
 
 - id : int
-- intitule : string(10)
-- nbPlaces : int
-- dateDebut : datetime
-- dateFin : datetime
+- intitule : string(10) not null
+- nbPlaces : int not null
+- dateDebut : datetime not null
+- dateFin : datetime not null
 
 ### Formation
 
 - id : int
-- titre : string(100)
+- titre : string(100) not null
 
 ### Module
 
 - id : int
-- nom : string(50)
+- nom : string(50) not null
 
 ### Lieu
 
 - id : int
-- ville : string(100)
-- cp : string(10)
+- ville : string(100) not null
+- cp : string(10) not null
 
 ## Relations
 

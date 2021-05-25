@@ -1,0 +1,16 @@
+# Creation
+
+symfony new Sym-ElanSession --full
+
+# Server
+
+symfony server:start
+
+# Entities
+
+php bin/console make:entity Stagiaire
+php bin/console make:entity User
+php bin/console make:entity Session
+php bin/console make:entity Formation
+php bin/console make:entity Module
+php bin/console make:entity Lieu

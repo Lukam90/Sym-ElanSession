@@ -141,23 +141,23 @@ class TestController extends AbstractController
 
         // Formation > Développeur Web PHP
 
-        var_dump($formations[0]);
+        //var_dump($formations[0]);
 
-        echo "<br><br>";
-
-        var_dump($modules[0]);
+        //var_dump($modules[0]);
  
-        //$formations[0]->addModule($modules[0]);
-        /*$formations[0]->addModule($modules[1]);
+        $formations[0]->addModule($modules[0]);
+        $formations[0]->addModule($modules[1]);
         $formations[0]->addModule($modules[2]);
         $formations[0]->addModule($modules[3]);
         $formations[0]->addModule($modules[4]);
         $formations[0]->addModule($modules[5]);
         $formations[0]->addModule($modules[6]);
-        $formations[0]->addModule($modules[7]);*/
+        $formations[0]->addModule($modules[7]);
+
+        var_dump($formations[0]->getModules());
 
         // Formation > Développeur Java / Android
-/*
+
         $formations[1]->addModule($modules[4]);
         $formations[1]->addModule($modules[5]);
         $formations[1]->addModule($modules[6]);
@@ -185,7 +185,7 @@ class TestController extends AbstractController
         $formations[5]->addModule($modules[5]);
         $formations[5]->addModule($modules[6]);
         $formations[5]->addModule($modules[11]);
-*/
+
         return new Response;
     }
 }

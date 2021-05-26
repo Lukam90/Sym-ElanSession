@@ -38,6 +38,7 @@ class Formation
     public function __construct()
     {
         $this->sessions = new ArrayCollection();
+        $this->modules = new ArrayCollection();
     }
 
     public function __toString()
@@ -79,7 +80,7 @@ class Formation
     {
         if (!$this->modules->contains($module)) {
             $this->modules[] = $module;
-            $module->setFormation($this);
+            //$module->setFormation($this);
         }
 
         return $this;

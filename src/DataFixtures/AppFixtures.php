@@ -134,11 +134,15 @@ class AppFixtures extends Fixture
         $formations[0]->addModule($modules[6]);
         $formations[0]->addModule($modules[7]);
 
+        $manager->persist($formations[0]);
+
         // Formation > Développeur Java / Android
 
         $formations[1]->addModule($modules[4]);
         $formations[1]->addModule($modules[5]);
         $formations[1]->addModule($modules[6]);
+
+        $manager->persist($formations[1]);
 
         // Formation > Infographie
 
@@ -146,11 +150,15 @@ class AppFixtures extends Fixture
         $formations[2]->addModule($modules[5]);
         $formations[2]->addModule($modules[11]);
 
+        $manager->persist($formations[2]);
+
         // Formation > Secrétariat
 
         $formations[3]->addModule($modules[5]);
         $formations[3]->addModule($modules[7]);
         $formations[3]->addModule($modules[8]);
+
+        $manager->persist($formations[3]);
 
         // Formation > Comptabilité
 
@@ -158,15 +166,15 @@ class AppFixtures extends Fixture
         $formations[4]->addModule($modules[6]);
         $formations[4]->addModule($modules[8]);
 
+        $manager->persist($formations[4]);
+
         // Formation > Vente
 
         $formations[5]->addModule($modules[5]);
         $formations[5]->addModule($modules[6]);
         $formations[5]->addModule($modules[11]);
 
-        foreach (formations as $formation) {
-            $manager->persist($formation);
-        }
+        $manager->persist($formations[5]);
 
         $manager->flush();
     }

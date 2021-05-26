@@ -1,0 +1,8 @@
+SET FOREIGN_KEY_CHECKS = 0;
+
+TRUNCATE TABLE `formation`;
+TRUNCATE TABLE `lieu`;
+TRUNCATE TABLE `module`;
+TRUNCATE TABLE `session`;
+TRUNCATE TABLE `stagiaire`;
+TRUNCATE TABLE `user`;

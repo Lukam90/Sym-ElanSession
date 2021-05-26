@@ -3,16 +3,20 @@
 namespace App\DataFixtures;
 
 use App\Data\Values;
+use App\Entity\Lieu;
 use App\Entity\User;
 use App\Entity\Module;
 use App\Entity\Session;
+use App\Entity\Formation;
+use App\Entity\Stagiaire;
+
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 
 class AppFixtures extends Fixture
 {
     public function jsonConvert($jsonFile) {
-        $res = file_get_contents("json/$jsonFile", true);
+        $res = file_get_contents("public/json/$jsonFile", true);
 
         $res = json_decode($res);
 
@@ -21,50 +25,42 @@ class AppFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
-        /* Utilisateurs */
+        // Utilisateurs
 
         $tabUsers = $this->jsonConvert("users.json");
 
-        //var_dump($tabUsers[0]);
-
         foreach ($tabUsers as $user) {
             $objUser = new User();
-            $objUser->setId($user["id"]);
-            $objUser->setEmail($user["email"]);
-            $objUser->setPrenom($user["prenom"]);
-            $objUser->setNom($user["nom"]);
-            $objUser->setPassword($user["password"]);
-            $objUser->setRole($user["role"]);
-
-            //var_dump($objUser);
+            $objUser->setId($user->id);
+            $objUser->setEmail($user->email);
+            $objUser->setPrenom($user->prenom);
+            $objUser->setNom($user->nom);
+            $objUser->setPassword($user->password);
+            $objUser->setRole($user->role);
 
             $manager->persist($objUser);
         }
 
-        /* Stagiaires */
+        // Stagiaires
 
         $tabStagiaires = $this->jsonConvert("stagiaires.json");
 
-        //var_dump($tabStagiaires[0]);
-
         foreach ($tabStagiaires as $stagiaire) {
             $objStagiaire = new Stagiaire();
-            $objStagiaire->setId($stagiaire["id"]);
-            $objStagiaire->setNom($stagiaire["nom"]);
-            $objStagiaire->setPrenom($stagiaire["prenom"]);
-            $objStagiaire->setEmail($stagiaire["email"]);
-            $objStagiaire->setAdresse($stagiaire["adresse"]);
-            $objStagiaire->setCp($stagiaire["cp"]);
-            $objStagiaire->setVille($stagiaire["ville"]);
-            $objStagiaire->setTelephone($stagiaire["telephone"]);
-            $objStagiaire->setNPoleEmploi($stagiaire["nPoleEmploi"]);
-
-            //var_dump($objStagiaire);
+            $objStagiaire->setId($stagiaire->id);
+            $objStagiaire->setNom($stagiaire->nom);
+            $objStagiaire->setPrenom($stagiaire->prenom);
+            $objStagiaire->setEmail($stagiaire->email);
+            $objStagiaire->setAdresse($stagiaire->adresse);
+            $objStagiaire->setCp($stagiaire->cp);
+            $objStagiaire->setVille($stagiaire->ville);
+            $objStagiaire->setTelephone($stagiaire->telephone);
+            $objStagiaire->setNPoleEmploi($stagiaire->nPoleEmploi);
 
             $manager->persist($objStagiaire);
         }
 
-        /* Lieux */
+/*        // Lieux
 
         $tabLieux = $this->jsonConvert("lieux.json");
 
@@ -74,9 +70,9 @@ class AppFixtures extends Fixture
 
         foreach ($tabLieux as $lieu) {
             $objLieu = new Lieu();
-            $objLieu->setId($lieu["id"]);
-            $objLieu->setVille($lieu["ville"]);
-            $objLieu->setCp($lieu["cp"]);
+            $objLieu->setId($lieu->id);
+            $objLieu->setVille($lieu->ville);
+            $objLieu->setCp($lieu->cp);
 
             array_push($lieux, $objLieu);
 
@@ -85,7 +81,7 @@ class AppFixtures extends Fixture
 
         //var_dump($lieux);
 
-        /* Sessions */
+        // Sessions
 
         $sessions = $this->jsonConvert("sessions.json");
 
@@ -93,19 +89,19 @@ class AppFixtures extends Fixture
 
         foreach ($sessions as $session) {
             $objSession = new Session();
-            $objSession->setId($session["id"]);
-            $objSession->setIntitule($session["intitule"]);
-            $objSession->setNbPlaces($session["nbPlaces"]);
-            $objSession->setDateDebut(new \DateTime($session["dateDebut"]));
-            $objSession->setDateFin(new \DateTime($session["dateFin"]));
-            $objSession->setLieu($lieux[$session["lieu"]]);
+            $objSession->setId($session->id);
+            $objSession->setIntitule($session->intitule);
+            $objSession->setNbPlaces($session->nbPlaces);
+            $objSession->setDateDebut(new \DateTime($session->dateDebut));
+            $objSession->setDateFin(new \DateTime($session->dateFin));
+            $objSession->setLieu($lieux[$session->lieu]);
 
             //var_dump($objSession);
 
             $manager->persist($objSession);
         }
 
-        /* Modules */
+        // Modules
 
         $tabModules = $this->jsonConvert("modules.json");
 
@@ -115,15 +111,15 @@ class AppFixtures extends Fixture
 
         foreach ($tabModules as $module) {
             $objModule = new Module();
-            $objModule->setId($module["id"]);
-            $objModule->setNom($module["nom"]);
+            $objModule->setId($module->id);
+            $objModule->setNom($module->nom);
 
             array_push($modules, $objModule);
 
             $manager->persist($objModule);
         }
 
-        /* Formations */
+        // Formations
 
         $tabFormations = $this->jsonConvert("formations.json");
 
@@ -133,15 +129,11 @@ class AppFixtures extends Fixture
 
         foreach ($tabFormations as $formation) {
             $objFormation = new Formation();
-            $objFormation->setId($formation["id"]);
-            $objFormation->setTitre($formation["titre"]);
+            $objFormation->setId($formation->id);
+            $objFormation->setTitre($formation->titre);
 
             array_push($formations, $objFormation);
         }
-
-        /*foreach ($formations as $formation) {
-            echo "<p>" . ($formation->getId() - 1) . " " . $formation->getTitre() . "</p>";
-        }*/
 
         // Formation > Développeur Web PHP
 
@@ -190,13 +182,9 @@ class AppFixtures extends Fixture
         $formations[5]->addModule($modules[6]);
         $formations[5]->addModule($modules[11]);
 
-        /*foreach ($formations as $formation) {
-            echo "<p>" . ($formation->getId() - 1) . " " . $formation->getTitre() . "</p>";
-        }*/
-
         foreach ($this->formations as $formation) {
             //$manager->persist($formation);
-        }
+        }*/
 
         $manager->flush();
     }

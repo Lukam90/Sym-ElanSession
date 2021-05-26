@@ -51,7 +51,7 @@ php bin/console make:controller TestController
 
 # SQL
 
-php bin/console doctrine:query:sql truncate.sql
+php bin/console doctrine:query:sql <cmd>
 
 # Fixtures
 

@@ -10,6 +10,7 @@ use App\Entity\Session;
 use App\Entity\Formation;
 use App\Entity\Stagiaire;
 
+use Doctrine\ORM\EntityManager;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 

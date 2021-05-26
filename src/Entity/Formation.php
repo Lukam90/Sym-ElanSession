@@ -50,6 +50,11 @@ class Formation
         return $this->id;
     }
 
+    public function setId(int $id)
+    {
+        $this->id = $id;
+    }
+
     public function getTitre(): ?string
     {
         return $this->titre;

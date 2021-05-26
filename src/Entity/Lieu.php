@@ -45,6 +45,11 @@ class Lieu
         return $this->id;
     }
 
+    public function setId(int $id)
+    {
+        $this->id = $id;
+    }
+
     public function getVille(): ?string
     {
         return $this->ville;

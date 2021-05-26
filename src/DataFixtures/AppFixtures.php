@@ -60,11 +60,9 @@ class AppFixtures extends Fixture
             $manager->persist($objStagiaire);
         }
 
-/*        // Lieux
+        // Lieux
 
         $tabLieux = $this->jsonConvert("lieux.json");
-
-        //var_dump($tabLieux[0]);
 
         $lieux = [];
 
@@ -79,13 +77,9 @@ class AppFixtures extends Fixture
             $manager->persist($objLieu);
         }
 
-        //var_dump($lieux);
-
         // Sessions
 
         $sessions = $this->jsonConvert("sessions.json");
-
-        //var_dump($sessions[0]);
 
         foreach ($sessions as $session) {
             $objSession = new Session();
@@ -96,16 +90,12 @@ class AppFixtures extends Fixture
             $objSession->setDateFin(new \DateTime($session->dateFin));
             $objSession->setLieu($lieux[$session->lieu]);
 
-            //var_dump($objSession);
-
             $manager->persist($objSession);
         }
 
         // Modules
 
         $tabModules = $this->jsonConvert("modules.json");
-
-        var_dump($tabModules[0]);
 
         $modules = [];
 
@@ -123,8 +113,6 @@ class AppFixtures extends Fixture
 
         $tabFormations = $this->jsonConvert("formations.json");
 
-        var_dump($tabFormations[0]);
-
         $formations = [];
 
         foreach ($tabFormations as $formation) {
@@ -136,10 +124,6 @@ class AppFixtures extends Fixture
         }
 
         // Formation > Développeur Web PHP
-
-        //var_dump($formations[0]);
-
-        //var_dump($modules[0]);
  
         $formations[0]->addModule($modules[0]);
         $formations[0]->addModule($modules[1]);
@@ -149,8 +133,6 @@ class AppFixtures extends Fixture
         $formations[0]->addModule($modules[5]);
         $formations[0]->addModule($modules[6]);
         $formations[0]->addModule($modules[7]);
-
-        //var_dump($formations[0]->getModules());
 
         // Formation > Développeur Java / Android
 
@@ -182,9 +164,9 @@ class AppFixtures extends Fixture
         $formations[5]->addModule($modules[6]);
         $formations[5]->addModule($modules[11]);
 
-        foreach ($this->formations as $formation) {
-            //$manager->persist($formation);
-        }*/
+        foreach (formations as $formation) {
+            $manager->persist($formation);
+        }
 
         $manager->flush();
     }

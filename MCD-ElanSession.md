@@ -26,7 +26,7 @@
 ### Session
 
 - id : int
-- intitule : string(10) not null
+- intitule : string(30) not null
 - nbPlaces : int not null
 - dateDebut : datetime not null
 - dateFin : datetime not null

@@ -20,7 +20,7 @@ class Session
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=10)
+     * @ORM\Column(type="string", length=30)
      */
     private $intitule;
 

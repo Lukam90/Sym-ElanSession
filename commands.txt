@@ -48,6 +48,7 @@ php bin/console doctrine:schema:update --force
 # Controller
 
 php bin/console make:controller TestController
+php bin/console make:controller SecurityController
 
 # SQL
 
@@ -61,3 +62,7 @@ php bin/console make:fixtures
 
 php bin/console doctrine:fixtures:load
 php bin/console doctrine:fixtures:load --purge-with-truncate
+
+# Authentication
+
+php bin/console make:auth

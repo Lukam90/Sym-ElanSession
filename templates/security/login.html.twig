@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ElanSession - Connexion{% endblock %}
+
+{% block body %}
+    <form method="post" class="uk-form-stacked">
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey | trans(error.messageData, 'security') }}</div>
+        {% endif %}
+
+        {% if app.user %}
+            <div class="mb-3">
+                {{ app.user.email }}, <a href="{{ path('logout') }}">Deconnexion</a>
+            </div>
+        {% endif %}
+
+        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+
+        <form class="w3-container">
+            <div class="w3-row">
+                <div class="{{ quarter }}">
+                    <label for="inputEmail" class="{{ labelClass }}">Email</label>
+
+                    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="{{ inputClass }}" autocomplete="email" required autofocus>
+                </div>
+            </div>
+
+            <div class="w3-row">
+                <div class="{{ quarter }}">
+                    <label for="inputPassword" class="{{ labelClass }}">Mot de passe</label>
+                    
+                    <input type="password" name="password" id="inputPassword" class="{{ inputClass }}" autocomplete="current-password" required>
+                </div>
+            </div>
+
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+            <div class="w3-row">
+                <div class="{{ quarter }}">
+                    <button class="{{ btnClass }}" type="submit">Connexion</button>
+                </div>
+            </div>
+        </form>
+
+        {#
+            Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+            See https://symfony.com/doc/current/security/remember_me.html
+
+            <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" name="_remember_me"> Remember me
+                </label>
+            </div>
+        #}        
+    </form>
+{% endblock %}

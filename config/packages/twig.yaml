@@ -1,2 +1,27 @@
 twig:
     default_path: '%kernel.project_dir%/templates'
+
+    globals:
+        fontawesome: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+
+        navitem: "w3-bar-item w3-button w3-hover-purple"
+        
+        panel: "w3-panel w3-display-container w3-border"
+        
+        closeBtn: "w3-button w3-large w3-display-topright"
+        closeSnippet: "this.parentElement.style.display='none';"
+
+        table: "w3-table w3-striped w3-bordered w3-margin-top w3-mobile"
+
+        topLink: "w3-button w3-indigo w3-hover-purple w3-margin-top"
+
+        labelClass: "w3-margin-top"
+        inputClass: "w3-input w3-border w3-margin-bottom"
+        btnClass: "w3-button w3-indigo w3-hover-purple w3-margin-top"
+
+        quarter: "w3-quarter w3-container"
+        third: "w3-third w3-container"
+        half: "w3-half w3-container"
+
+        success: "w3-button w3-green w3-hover-purple"
+        error: "w3-button w3-red w3-hover-purple"

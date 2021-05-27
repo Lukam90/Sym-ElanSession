@@ -6,31 +6,30 @@
     <h3><a> Formation </a></h3>
     <table id="formation">
         <thead>
-            <th>Titre</th>
+            <th>TITRE</th>
         </thead>
-        {% for item in items %}
+        {% for formation in formations %}
             <tbody>
-                <td></td>
+                <td>{{ formation.titre }}</td>
             </tbody>
         {% endfor %}
-        
     </table>
     <h3><a> Session </a></h3>
     <table id="session">
         <thead>
             <th>INTITULE</th>
             <th>NOMBRE DE PLACE</th>
-            <th>DATE PREVUE</th>
-            <th>MODULE</th>
+            <th>DATE DEBUT</th>
+            <TH>DATE FIN</TH>
         </thead>
         <tbody>
             {% for session in sessions %}
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td><a href="{{ path('edit') }}">Modifier</a></td>
+                    <td>{{ session.intitule }}</td>
+                    <td>{{ session.nbPlaces }}</td>
+                    <td>{{ session.dateDebut|date('d/m/Y') }}</td>
+                    <td>{{ session.dateFin|date('d/m/Y') }}</td>
+                    {#<td><a href="{{ path('edit') }}">Modifier</a></td>#}
                     <td>X suprimer</td>
                 </tr>
             {% endfor %}

@@ -40,12 +40,12 @@ class Session
     private $dateFin;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Formation::class, inversedBy="formation")
+     * @ORM\ManyToOne(targetEntity=Formation::class, inversedBy="sessions")
      */
     private $formation;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Lieu::class, inversedBy="lieu")
+     * @ORM\ManyToOne(targetEntity=Lieu::class, inversedBy="sessions")
      */
     private $lieu;
 

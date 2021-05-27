@@ -14,7 +14,7 @@
 
     <body>
         <nav class="w3-bar w3-blue w3-mobile">
-            <a href="{{ path('home') }}" class="{{ navitem }}">ElanSession</a>
+            <a href="{{ path('index') }}" class="{{ navitem }}">ElanSession</a>
 
             {% if app.user %}
                 <a href="#" class="{{ navitem }}">Bienvenue {{ app.user.email }}</a>

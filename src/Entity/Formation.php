@@ -31,7 +31,7 @@ class Formation
     private $sessions;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Module::class, inversedBy="formations")
+     * @ORM\ManyToMany(targetEntity=Module::class, mappedBy="formations")
      */
     private $modules;
 

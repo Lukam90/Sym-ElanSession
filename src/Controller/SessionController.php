@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
- ** @Route("/session", name="session")
+ ** @Route("/session")
  */
 class SessionController extends AbstractController
 {
@@ -36,12 +36,12 @@ class SessionController extends AbstractController
     }
     
     /**
-     ** @Route("/{id}", name="session_show", methods='GET')
+     ** @Route("/{id}", name="session_show", methods="GET")
      */
-    public function oneSession(Session $sessions):Response
+    public function oneSession(Session $session):Response
     {
         return $this->render('session/index.html.twig', [
-            'session' => $sessions,
+            'session' => $session
         ]);
     }
 

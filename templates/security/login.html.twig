@@ -15,7 +15,7 @@
 
     <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
 
-    <form class="w3-container">
+    <form action="{{ path('login') }}" method="post" class="w3-container">
         <div class="w3-row">
             <div class="{{ quarter }}">
                 <label for="inputEmail" class="{{ labelClass }}">Email</label>

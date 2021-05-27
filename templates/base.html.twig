@@ -2,24 +2,57 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Elan Formation - {% block title %} {% endblock %} </title>
-        {# Run `composer require symfony/webpack-encore-bundle`
-           and uncomment the following Encore helpers to start using Symfony UX #}
-        {% block stylesheets %}
-            {#{{ encore_entry_link_tags('app') }}#}
-        {% endblock %}
 
-        {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
+        <title>{% block title %} ElanSession {% endblock %}</title>
+
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ fontawesome }}">
+            <link rel="stylesheet" href="{{ asset('css/w3.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/style.css') }}">
         {% endblock %}
     </head>
-    
-    <div>
-        <h1>ELAN FORMATION</h1>
-        <a href="">Menue</a>
-    </div>
 
     <body>
-        {% block body %}{% endblock %}
+        <nav class="w3-bar w3-blue w3-mobile">
+            <a href="{{ path('home') }}" class="{{ navitem }}">ElanSession</a>
+
+            {% if app.user %}
+                <a href="#" class="{{ navitem }}">Bienvenue {{ app.user.email }}</a>
+            {% endif %}
+
+            {% if app.user and is_granted('ROLE_ADMIN') %}
+                <a href="#" class="{{ navitem }}">Administration</a>
+            {% endif %}
+
+            {% if app.user %}
+                <a href="{{ path('logout') }}" class="{{ navitem }}">Déconnexion</a>
+            {% else %}
+                <a href="{{ path('login') }}" class="{{ navitem }}">Connexion</a>
+            {% endif %}
+        </nav>
+
+        <main class="w3-container">
+            <section id="flash-messages">
+                {% for message in app.flashes("error") %}
+                    <div class="{{ panel }} w3-red">
+                        <span onclick="{{ closeSnippet }}" class="{{ closeBtn }}">&times;</span>
+
+                        <p>{{ message }}</p>
+                    </div>
+                {% endfor %}
+
+                {% for message in app.flashes("success") %}
+                    <div class="{{ panel }} w3-green">
+                        <span onclick="{{ closeSnippet }}" class="{{ closeBtn }}">&times;</span>
+
+                        <p>{{ message }}</p>
+                    </div>
+                {% endfor %}
+            </section>
+
+            {% block body %}{% endblock %}
+        </main>
+
+        {% block javascripts %}{% endblock %}
     </body>
 </html>

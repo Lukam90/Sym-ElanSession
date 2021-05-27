@@ -13,9 +13,17 @@ use App\Entity\Stagiaire;
 use Doctrine\ORM\EntityManager;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class AppFixtures extends Fixture
 {
+    private $encoder;
+
+    public function __construct(UserPasswordEncoderInterface $encoder)
+    {
+        $this->encoder = $encoder;
+    }
+
     public function jsonConvert($jsonFile) {
         $res = file_get_contents("public/json/$jsonFile", true);
 
@@ -36,8 +44,12 @@ class AppFixtures extends Fixture
             $objUser->setEmail($user->email);
             $objUser->setPrenom($user->prenom);
             $objUser->setNom($user->nom);
-            $objUser->setPassword($user->password);
+
+            $password = $this->encoder->encodePassword($objUser, $user->password);
+            $objUser->setPassword($password);
+            
             $objUser->setRole($user->role);
+            $objUser->setRoles(['ROLE_ADMIN']);
 
             $manager->persist($objUser);
         }

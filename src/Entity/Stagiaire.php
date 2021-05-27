@@ -60,8 +60,7 @@ class Stagiaire
     private $nPoleEmploi;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Session::class, mappedBy="stagiaires")
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\ManyToMany(targetEntity=Session::class, inversedBy="stagiaires")
      */
     private $sessions;
 
@@ -193,7 +192,6 @@ class Stagiaire
     {
         if (!$this->sessions->contains($session)) {
             $this->sessions[] = $session;
-            $session->setStagiaire($this);
         }
 
         return $this;
@@ -201,24 +199,7 @@ class Stagiaire
 
     public function removeSession(Session $session): self
     {
-        if ($this->sessions->removeElement($session)) {
-            // set the owning side to null (unless already changed)
-            if ($session->getStagiaire() === $this) {
-                $session->setStagiaire(null);
-            }
-        }
-
-        return $this;
-    }
-
-    public function getSession(): ?Session
-    {
-        return $this->session;
-    }
-
-    public function setSession(?Session $session): self
-    {
-        $this->session = $session;
+        $this->sessions->removeElement($session);
 
         return $this;
     }

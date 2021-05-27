@@ -154,7 +154,7 @@ class Session
     {
         if (!$this->stagiaires->contains($stagiaire)) {
             $this->stagiaires[] = $stagiaire;
-            $stagiaire->setSession($this);
+            $stagiaire->addSession($this);
         }
 
         return $this;
@@ -163,10 +163,7 @@ class Session
     public function removeStagiaire(Stagiaire $stagiaire): self
     {
         if ($this->stagiaires->removeElement($stagiaire)) {
-            // set the owning side to null (unless already changed)
-            if ($stagiaire->getSession() === $this) {
-                $stagiaire->setSession(null);
-            }
+            $stagiaire->removeSession($this);
         }
 
         return $this;

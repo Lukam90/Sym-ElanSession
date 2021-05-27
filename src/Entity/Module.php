@@ -25,7 +25,7 @@ class Module
     private $nom;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Formation::class, mappedBy="module")
+     * @ORM\ManyToMany(targetEntity=Formation::class, mappedBy="modules")
      * @ORM\JoinColumn(nullable=true)
      */
     private $formations;
@@ -74,7 +74,7 @@ class Module
     {
         if (!$this->formations->contains($formation)) {
             $this->formations[] = $formation;
-            $formation->setModule($this);
+            $formation->addModule($this);
         }
 
         return $this;
@@ -83,10 +83,7 @@ class Module
     public function removeFormation(Formation $formation): self
     {
         if ($this->formations->removeElement($formation)) {
-            // set the owning side to null (unless already changed)
-            if ($formation->getModule() === $this) {
-                $formation->setModule(null);
-            }
+            $formation->removeModule($this);
         }
 
         return $this;

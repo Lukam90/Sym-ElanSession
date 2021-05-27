@@ -31,7 +31,7 @@ class Formation
     private $sessions;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Module::class, mappedBy="formation")
+     * @ORM\ManyToMany(targetEntity=Module::class, inversedBy="formations")
      */
     private $modules;
 
@@ -69,36 +69,6 @@ class Formation
     }
 
     /**
-     * @return Collection|Module[]
-     */
-    public function getModules(): Collection
-    {
-        return $this->modules;
-    }
-
-    public function addModule(Module $module): self
-    {
-        if (!$this->modules->contains($module)) {
-            $this->modules[] = $module;
-            //$module->setFormation($this);
-        }
-
-        return $this;
-    }
-
-    public function removeModule(Module $module): self
-    {
-        if ($this->modules->removeElement($module)) {
-            // set the owning side to null (unless already changed)
-            if ($module->getFormation() === $this) {
-                $module->setFormation(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
      * @return Collection|Session[]
      */
     public function getSessions(): Collection
@@ -124,6 +94,30 @@ class Formation
                 $session->setFormation(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Module[]
+     */
+    public function getModules(): Collection
+    {
+        return $this->modules;
+    }
+
+    public function addModule(Module $module): self
+    {
+        if (!$this->modules->contains($module)) {
+            $this->modules[] = $module;
+        }
+
+        return $this;
+    }
+
+    public function removeModule(Module $module): self
+    {
+        $this->modules->removeElement($module);
 
         return $this;
     }

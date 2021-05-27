@@ -12,7 +12,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
- * @Route("/user", name="user")
+ * @Route("/user")
  */
 class SecurityController extends AbstractController
 {
@@ -22,6 +22,8 @@ class SecurityController extends AbstractController
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
         if ($this->getUser()) {
+            $this->addFlash("success", "Connexion réussie !");
+
             return $this->redirectToRoute('test_login');
         }
 
@@ -30,8 +32,6 @@ class SecurityController extends AbstractController
 
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
-
-        $this->addFlash("success", "Connexion réussie !");
 
         return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
     }

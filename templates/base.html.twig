@@ -14,14 +14,14 @@
 
     <body>
         <nav class="w3-bar w3-blue w3-mobile">
-            <a href="{{ path('home') }}" class="{{ navitem }}">ElanSession</a>
+            <a href="{{ path('index') }}" class="{{ navitem }}">ElanSession</a>
 
             {% if app.user %}
                 <a href="#" class="{{ navitem }}">Bienvenue {{ app.user.email }}</a>
             {% endif %}
 
             {% if app.user and is_granted('ROLE_ADMIN') %}
-                <a href="#" class="{{ navitem }}">Administration</a>
+                <a href="{{ path('stagiaires_index') }}" class="{{ navitem }}">Stagiaires</a>
             {% endif %}
 
             {% if app.user %}

@@ -1,0 +1,71 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Liste des stagiaires{% endblock %}
+
+{% block body %}
+    <p><a href="{{ path('stagiaires_index') }}">Retour à la liste des stagiaires</a></p>
+
+    {% if editMode %}
+        <h1>Modification d'un stagiaire</h1>
+    {% else %}
+        <h1>Ajout d'un stagiaire</h1>
+    {% endif %}
+
+    {{ form_start(formStagiaire) }}
+        <div class="w3-row">
+            <div class="{{ quarter }}">
+                {{ form_row(formStagiaire.prenom) }}
+            </div>
+        </div>
+
+        <div class="w3-row">
+            <div class="{{ quarter }}">
+                {{ form_row(formStagiaire.nom) }}
+            </div>
+        </div>
+
+        <div class="w3-row">
+            <div class="{{ quarter }}">
+                {{ form_row(formStagiaire.email) }}
+            </div>
+        </div>
+
+        <div class="w3-row">
+            <div class="{{ quarter }}">
+                {{ form_row(formStagiaire.adresse) }}
+            </div>
+        </div>
+
+        <div class="w3-row">
+            <div class="{{ quarter }}">
+                {{ form_row(formStagiaire.cp) }}
+            </div>
+        </div>
+
+        <div class="w3-row">
+            <div class="{{ quarter }}">
+                {{ form_row(formStagiaire.ville) }}
+            </div>
+        </div>
+
+        <div class="w3-row">
+            <div class="{{ quarter }}">
+                {{ form_row(formStagiaire.telephone) }}
+            </div>
+        </div>
+
+        <div class="w3-row">
+            <div class="{{ quarter }}">
+                {{ form_row(formStagiaire.nPoleEmploi) }}
+            </div>
+        </div>
+
+        <div class="w3-row">
+            <div class="{{ quarter }}">
+                {{ form_row(formStagiaire.envoi) }}
+            </div>
+        </div>
+    {{ form_end(formStagiaire) }}
+
+    <p><a href="{{ path('stagiaires_index') }}">Retour à la liste des stagiaires</a></p>
+{% endblock %}

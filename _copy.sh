@@ -1,6 +1,9 @@
 date=`date +"%H.%M"`
+target="$HOME/Téléchargements/Copies/Sym-ElanSession-$date"
 
-#cp -r public/json $HOME/Téléchargements/Copies/JSON-$date
-cp src/DataFixtures/AppFixtures.php $HOME/Téléchargements/Copies/AppFixtures-$date
+cp -r config $target
+cp -r public $target
+cp -r src $target
+cp -r templates $target
 
-echo "Copie des données de test - $date"
+echo "Copie du projet - $date"

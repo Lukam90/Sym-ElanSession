@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fiche de {{ stagiaire }}{% endblock %}
+
+{% block body %}
+    <p><a href="{{ path('stagiaires_index') }}">Retour à la liste des stagiaires</a></p>
+
+    {% if stagiaire %}
+        <h1>{{ stagiaire }}</h1>
+
+        <p>
+            {{ stagiaire.adresse }}<br>
+            {{ stagiaire.cp }} {{ stagiaire.ville }}<br>
+            {{ stagiaire.telephone }}<br>
+            {{ stagiaire.email }}
+
+            {% if stagiaire.nPoleEmploi %}
+                <br>{{ stagiaire.nPoleEmploi }}
+            {% endif %}
+        </p>
+
+        <a href="{{ path('stagiaires_index') }}">Retour à la liste des stagiaires</a>
+    {% else %}
+        <p>Ce stagiaire n'existe pas.</p>
+    {% endif %}
+{% endblock %}

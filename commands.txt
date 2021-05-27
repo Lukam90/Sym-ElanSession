@@ -49,6 +49,7 @@ php bin/console doctrine:schema:update --force
 
 php bin/console make:controller TestController
 php bin/console make:controller SecurityController
+php bin/console make:controller StagiaireController
 
 # SQL
 

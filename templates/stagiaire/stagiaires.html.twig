@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des stagiaires{% endblock %}
+
+{% block body %}
+    <a class="{{ topLink }}" href="{{ path('stagiaire_add') }}">Ajouter un stagiaire</a>
+
+    {% if stagiaires %}
+        <table class="{{ table }}">
+            <thead>
+                <tr>
+                    <th><a href="{{ path('stagiaires_sort', { 'criteria' : 'prenom' }) }}">Stagiaire</a></th>
+                    <th><a href="{{ path('stagiaires_sort', { 'criteria' : 'email' }) }}">E-Mail</a></th>
+                    <th><a href="{{ path('stagiaires_sort', { 'criteria' : 'adresse' }) }}">Adresse</a></th>
+                    <th><a href="{{ path('stagiaires_sort', { 'criteria' : 'cp' }) }}">CP</a></th>
+                    <th><a href="{{ path('stagiaires_sort', { 'criteria' : 'ville' }) }}">Ville</a></th>
+                    <th><a href="{{ path('stagiaires_sort', { 'criteria' : 'telephone' }) }}">Téléphone</a></th>
+                    <th><a href="{{ path('stagiaires_sort', { 'criteria' : 'nPoleEmploi' }) }}">N Pôle Emploi</a></th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for stagiaire in stagiaires %}
+                    <tr>
+                        <td><a href="{{ path('stagiaire_show', { 'id' : stagiaire.id }) }}">{{ stagiaire.prenom ~ ' ' ~ stagiaire.nom }}</a></td>
+                        <td>{{ stagiaire.email }}</td>
+                        <td>{{ stagiaire.adresse }}</td>
+                        <td>{{ stagiaire.cp }}</td>
+                        <td>{{ stagiaire.ville }}</td>
+                        <td>{{ stagiaire.telephone }}</td>
+                        <td>{{ stagiaire.nPoleEmploi }}</td>
+                        <td>
+                            <a href="{{ path('stagiaire_edit', { 'id' : stagiaire.id }) }}" class="{{ success }} w3-margin-right">
+                                <i class="fa fa-edit"></i>
+                            </a>
+
+                            <button class="{{ error }} w3-margin-left" onclick="openModal('{{ stagiaire.id }}', 'stagiaires');">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Il n'y a aucun stagiaire.</p>
+    {% endif %}
+
+    {% include "./partials/delete_modal.html.twig" %}
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/delete.js') }}"></script>
+{% endblock %}

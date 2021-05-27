@@ -21,7 +21,7 @@
             {% endif %}
 
             {% if app.user and is_granted('ROLE_ADMIN') %}
-                <a href="#" class="{{ navitem }}">Administration</a>
+                <a href="{{ path('stagiaires_index') }}" class="{{ navitem }}">Stagiaires</a>
             {% endif %}
 
             {% if app.user %}

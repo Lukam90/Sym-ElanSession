@@ -16,6 +16,10 @@ exec("$query session'");
 exec("$query module'");
 exec("$query formation'");
 
+exec("$query formation_module'");
+exec("$query module_formation'");
+exec("$query stagiaire_session'");
+
 echo "Les tables ont bien été vidées.";
 
 system("$fixtures");

@@ -58,7 +58,7 @@ class SessionController extends AbstractController
     }
     
     /**
-     ** @Route("/{id}", name="session_show", methods="GET")
+     ** @Route("/show/{id}", name="session_show", methods="GET")
      */
     public function oneSession(Session $session):Response
     {

@@ -66,15 +66,6 @@ class FormationController extends AbstractController
     }
 
     /**
-     * @Route("/show/{id}", name="formation_show", methods="GET")
-     */
-    public function show(Formation $formation): Response {
-        return $this->render("formation/formation_show.html.twig", [
-            "formation" => $formation
-        ]);
-    }
-
-    /**
      * @Route("/delete/{id}", name="formation_delete")
      * @param Formation $formation
      * @return Response

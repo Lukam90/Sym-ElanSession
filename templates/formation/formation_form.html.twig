@@ -1,0 +1,29 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Liste des formations{% endblock %}
+
+{% block body %}
+    <p><a href="{{ path('index') }}">Retour à la liste des formations</a></p>
+
+    {% if editMode %}
+        <h1>Modification d'une formation</h1>
+    {% else %}
+        <h1>Ajout d'une formation</h1>
+    {% endif %}
+
+    {{ form_start(formFormation) }}
+        <div class="w3-row">
+            <div class="{{ quarter }}">
+                {{ form_row(formFormation.titre) }}
+            </div>
+        </div>
+
+        <div class="w3-row">
+            <div class="{{ quarter }}">
+                {{ form_row(formFormation.envoi) }}
+            </div>
+        </div>
+    {{ form_end(formFormation) }}
+
+    <p><a href="{{ path('index') }}">Retour à la liste des formations</a></p>
+{% endblock %}

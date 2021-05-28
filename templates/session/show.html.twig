@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fiche de {{ session }}{% endblock %}
+
+{% block contenu %}
+    {% if session %}
+        <h1>{{ session }}</h1>
+
+        <p>Date</p>
+
+        <p>
+            {{ session.dateDebut }} - {{ session.dateFin }}
+        </p>
+
+        <p>nombre de place restante {{ session.nbPlaces }} </p>
+
+        <a href="{{ path('index') }}">Retour à la liste des session</a>
+    {% else %}
+        <p>Cette session n'existe pas.</p>
+    {% endif %}
+{% endblock %}

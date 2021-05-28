@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Data\Styles;
+use App\Entity\Formation;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -20,7 +21,8 @@ class FormationType extends AbstractType
                     "class" => Styles::$inputClass
                 ]
             ])
-            ->add('Valider', SubmitType::class, [
+            ->add('envoi', SubmitType::class, [
+                "label" => "Valider",
                 "attr" => [
                     "class" => Styles::$btnClass
                 ]

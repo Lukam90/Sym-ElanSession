@@ -16,6 +16,22 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class StagiaireController extends AbstractController
 {
     /**
+     * @Route("/sort", name="stagiaires_sort")
+     */
+    public function sort(Request $request): Response
+    {
+        $criteria = $request->query->get("criteria");
+
+        $stagiaires = $this->getDoctrine()
+                         ->getRepository(Stagiaire::class)
+                         ->findBy([], [$criteria => "ASC"]);
+
+        return $this->render('stagiaire/stagiaires.html.twig', [
+            'stagiaires' => $stagiaires,
+        ]);
+    }
+
+    /**
      * @Route("/add", name="stagiaire_add")
      * @Route("/{id}/edit", name="stagiaire_edit")
      */
@@ -72,22 +88,6 @@ class StagiaireController extends AbstractController
         $stagiaires = $this->getDoctrine()
                          ->getRepository(Stagiaire::class)
                          ->findBy([], ["id" => "ASC"]);
-
-        return $this->render('stagiaire/stagiaires.html.twig', [
-            'stagiaires' => $stagiaires,
-        ]);
-    }
-
-    /**
-     * @Route("/sort", name="stagiaires_sort")
-     */
-    public function sort(Request $request): Response
-    {
-        $criteria = $request->query->get("criteria");
-
-        $stagiaires = $this->getDoctrine()
-                         ->getRepository(Stagiaire::class)
-                         ->findBy([], [$criteria => "ASC"]);
 
         return $this->render('stagiaire/stagiaires.html.twig', [
             'stagiaires' => $stagiaires,

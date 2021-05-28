@@ -60,6 +60,11 @@ class Session
         $this->stagiaires = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->intitule;
+    }
+
     public function getId(): ?int
     {
         return $this->id;

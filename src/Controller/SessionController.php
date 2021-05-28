@@ -16,6 +16,27 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class SessionController extends AbstractController
 {
     /**
+     * @Route("/sort", name="sessions_sort")
+     */
+    public function sort(Request $request): Response
+    {
+        $criteria = $request->query->get("criteria");
+
+        $formations = $this->getDoctrine()
+                ->getRepository(Formation::class)
+                ->findBy([], ["titre" => "ASC"]);
+
+        $sessions = $this->getDoctrine()
+                         ->getRepository(Session::class)
+                         ->findBy([], [$criteria => "ASC"]);
+
+        return $this->render('home/index.html.twig', [
+            'formations' => $formations,
+            'sessions'   => $sessions,
+        ]);
+    }
+
+    /**
      * @Route("/add", name="session_add")
      * @Route("/{id}/edit", name="session_edit")
      */
@@ -85,5 +106,19 @@ class SessionController extends AbstractController
         ]);
     }
 
-    
+    /**
+     * @Route("/delete/{id}", name="session_delete")
+     * @param Session $session
+     * @return Response
+     */ 
+
+    public function remove(Session $session) {
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($session);
+        $em->flush();
+
+        $this->addFlash("success", "Le session $session a été supprimée.");
+
+        return $this->redirect($this->generateUrl("index"));
+    }
 }

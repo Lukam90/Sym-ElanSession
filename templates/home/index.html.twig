@@ -5,38 +5,76 @@
 {% block body %}
     <h3>Formations</h3>
 
-    <table id="formation" class="{{ table }}">
-        <thead>
-            <th>TITRE</th>
-        </thead>
+    <a class="{{ topLink }}" href="{{ path('formation_add') }}">Ajouter une formation</a>
 
-        {% for formation in formations %}
+    {% if formations %}
+        <table id="formations" class="{{ table }}">
             <tbody>
-                <td>{{ formation.titre }}</td>
-            </tbody>
-        {% endfor %}
-    </table>
+                {% for formation in formations %}
+                    <tr>
+                        <td>
+                            <a href="#">{{ formation.titre }}</a>
+                        </td>
 
-    <h3><a> Session </a></h3>
+                        <td>
+                            <a href="{{ path('formation_edit', { 'id' : formation.id }) }}" class="{{ success }} w3-margin-right">
+                                <i class="fa fa-edit"></i>
+                            </a>
+
+                            <button class="{{ error }} w3-margin-left" onclick="openModal('{{ formation.id }}', 'formations');">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Il n'y a aucune formation.</p>
+    {% endif %}
+
+    <h3>Sessions</h3>
+
+    <a class="{{ topLink }}" href="{{ path('session_add') }}">Ajouter une session</a>
     
-    <table id="session" class="{{ table }}">
-        <thead>
-            <th>INTITULE</th>
-            <th>NOMBRE DE PLACE</th>
-            <th>DATE DEBUT</th>
-            <TH>DATE FIN</TH>
-        </thead>
-        <tbody>
-            {% for session in sessions %}
-                <tr>
-                    <td>{{ session.intitule }}</td>
-                    <td>{{ session.nbPlaces }}</td>
-                    <td>{{ session.dateDebut|date('d/m/Y') }}</td>
-                    <td>{{ session.dateFin|date('d/m/Y') }}</td>
-                    {#<td><a href="{{ path('edit') }}">Modifier</a></td>#}
-                    <td>X suprimer</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    {% if sessions %}
+        <table id="session" class="{{ table }}">
+            <thead>
+                <th><a href="{{ path('sessions_sort', { 'criteria' : 'intitule' }) }}">Intitulé</a></th>
+                <th><a href="{{ path('sessions_sort', { 'criteria' : 'nbPlaces' }) }}">Nombre de places</a></th>
+                <th><a href="{{ path('sessions_sort', { 'criteria' : 'dateDebut' }) }}">Date de début</a></th>
+                <th><a href="{{ path('sessions_sort', { 'criteria' : 'dateFin' }) }}">Date de fin</a></th>
+                <th></th>
+            </thead>
+
+            <tbody>
+                {% for session in sessions %}
+                    <tr>
+                        <td><a href="{{ path('session_show', { 'id' : session.id }) }}">{{ session.intitule }}</a></td>
+                        <td>{{ session.nbPlaces }}</a></td>
+                        <td>{{ session.dateDebut | date('d/m/Y') }}</a></td>
+                        <td>{{ session.dateFin | date('d/m/Y') }}</a></td>
+                        
+                        <td>
+                            <a href="{{ path('session_edit', { 'id' : session.id }) }}" class="{{ success }} w3-margin-right">
+                                <i class="fa fa-edit"></i>
+                            </a>
+
+                            <button class="{{ error }} w3-margin-left" onclick="openModal('{{ session.id }}', 'session');">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Il n'y a aucune session.</p>
+    {% endif %}
+
+    {% include "./partials/delete_modal.html.twig" %}
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/delete.js') }}"></script>
 {% endblock %}

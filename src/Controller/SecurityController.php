@@ -11,9 +11,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
-/**
- * @Route("/user")
- */
 class SecurityController extends AbstractController
 {
     /**
@@ -24,7 +21,7 @@ class SecurityController extends AbstractController
         if ($this->getUser()) {
             $this->addFlash("success", "Connexion réussie !");
 
-            return $this->redirectToRoute('test_login');
+            return $this->redirectToRoute('index');
         }
 
         // get the login error if there is one

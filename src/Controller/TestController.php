@@ -10,12 +10,17 @@ use App\Entity\Formation;
 use App\Entity\Stagiaire;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+/**
+ * @Route("/tests")
+ * @IsGranted("ROLE_USER")
+ */
 class TestController extends AbstractController
 {
     /**
-     * @Route("/test-login", name="test_login")
+     * @Route("/_login", name="test_login")
      */
     public function login()
     {
@@ -23,7 +28,7 @@ class TestController extends AbstractController
     }
 
     /**
-     * @Route("/test-logout", name="test_logout")
+     * @Route("/_logout", name="test_logout")
      */
     public function logout()
     {

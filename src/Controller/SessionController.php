@@ -101,7 +101,7 @@ class SessionController extends AbstractController
      */
     public function oneSession(Session $session):Response
     {
-        return $this->render('session/index.html.twig', [
+        return $this->render('session/show.html.twig', [
             'session' => $session
         ]);
     }

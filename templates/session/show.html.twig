@@ -2,19 +2,15 @@
 
 {% block title %}Fiche de {{ session }}{% endblock %}
 
-{% block contenu %}
+{% block body %}
     {% if session %}
         <h1>{{ session }}</h1>
 
-        <p>Date</p>
+        <p>Dates : {{ session.dateDebut | date("d/m/Y") }} - {{ session.dateFin | date("d/m/Y") }}</p>
 
-        <p>
-            {{ session.dateDebut }} - {{ session.dateFin }}
-        </p>
+        <p>Nombre de places restantes : {{ session.nbPlaces }} </p>
 
-        <p>nombre de place restante {{ session.nbPlaces }} </p>
-
-        <a href="{{ path('index') }}">Retour à la liste des session</a>
+        <a href="{{ path('index') }}">Retour à la liste des sessions</a>
     {% else %}
         <p>Cette session n'existe pas.</p>
     {% endif %}

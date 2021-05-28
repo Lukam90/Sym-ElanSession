@@ -3,11 +3,14 @@
 namespace App\Form;
 
 use App\Data\Styles;
-use Doctrine\DBAL\Types\TextType;
+use App\Entity\Session;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class SessionType extends AbstractType
 {
@@ -19,22 +22,29 @@ class SessionType extends AbstractType
                     "class" => Styles::$inputClass
                 ]
             ])
-            ->add('nbPlaces', TextType::class, [
+            ->add('nbPlaces', NumberType::class, [
+                "html5" => true,
+                "data" => 1,
                 "attr" => [
-                    "class" => Styles::$inputClass
+                    "class" => Styles::$inputClass,
+                    "min" => 1,
+                    "max" => 100,
                 ]
             ])
             ->add('dateDebut', DateType::class, [
+                "widget" => "single_text",
                 "attr" => [
                     "class" => Styles::$inputClass
                 ]
             ])
             ->add('dateFin', DateType::class, [
+                "widget" => "single_text",
                 "attr" => [
                     "class" => Styles::$inputClass
                 ]
             ])
-            ->add('Valider', SubmitType::class, [
+            ->add('envoi', SubmitType::class, [
+                "label" => "Valider",
                 "attr" => [
                     "class" => Styles::$btnClass
                 ]

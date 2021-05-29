@@ -42,7 +42,7 @@ security:
         ROLE_ADMIN: ROLE_USER
     
     access_control:
-        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/(login|_error/40\d), roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/, roles: [IS_FULLY_AUTHENTICATED, ROLE_USER, ROLE_ADMIN] }
         
         # - { path: ^/profile, roles: ROLE_USER }

@@ -1,0 +1,7 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <p>Erreur 403 : Accès non autorisé</p>
+
+    <p>Vous devez être <a href="{{ path('login') }}">connecté</a> pour accéder à cette page.</p>
+{% endblock %}

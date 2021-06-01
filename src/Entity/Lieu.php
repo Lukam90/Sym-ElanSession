@@ -40,6 +40,11 @@ class Lieu
         $this->sessions = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->ville;
+    }
+
     public function getId(): ?int
     {
         return $this->id;

@@ -8,7 +8,11 @@
 
         <p>Dates : {{ session.dateDebut | date("d/m/Y") }} - {{ session.dateFin | date("d/m/Y") }}</p>
 
-        <p>Nombre de places restantes : {{ session.nbPlaces }} </p>
+        <p>Nombre de places restantes : {{ session.nbPlaces }}</p>
+
+        <p>Domaine : {{ session.formation }}</p>
+
+        <p>Lieu : {{ session.lieu }}</p>
 
         <a href="{{ path('index') }}">Retour à la liste des sessions</a>
     {% else %}
